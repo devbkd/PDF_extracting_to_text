@@ -7,26 +7,34 @@ root = tk.Tk()
 
 canvas = tk.Canvas(root, width=600, height=300)
 canvas.grid(columnspan=3, rowspan=3)
-#Logo
+
 logo = Image.open('logo.png')
 logo = ImageTk.PhotoImage(logo)
 logo_label = tk.Label(image=logo)
 logo_label.image = logo
 logo_label.grid(column=1, row=0)
 
-#instuctions
-instructions = tk.Label(root, text="Select a PDF file on your computers all its text", font="Relewy")
+instructions = tk.Label(
+    root,
+    text="Select a PDF file on your computers all its text",
+    font="Relewy",
+)
 instructions.grid(columnspan=3, column=0, row=1)
+
 
 def open_file():
     browse_text.set("loading...")
-    file = askopenfile(parent=root, mode="rb", title="Choose a file", filetype=[("Pdf file", "*.pdf")])
+    file = askopenfile(
+        parent=root,
+        mode="rb",
+        title="Choose a file",
+        filetype=[("Pdf file", "*.pdf")],
+    )
     if file:
         read_pdf = PyPDF2.PdfFileReader(file)
         page = read_pdf.getPage(0)
         page_content = page.extractText()
 
-        #text box
         text_box = tk.Text(root, height=10, width=50, padx=15, pady=15)
         text_box.insert(1.0, page_content)
         text_box.tag_configure("center", justify="center")
@@ -35,9 +43,18 @@ def open_file():
 
         browse_text.set("Browse")
 
-#browse button
+
 browse_text = tk.StringVar()
-browse_btn = tk.Button(root, textvariable=browse_text, command=lambda: open_file(), font="Raleway", bg="#20bebe", fg="white", height=2, width=15)
+browse_btn = tk.Button(
+    root,
+    textvariable=browse_text,
+    command=lambda: open_file(),
+    font="Raleway",
+    bg="#20bebe",
+    fg="white",
+    height=2,
+    width=15,
+)
 browse_text.set("Browse")
 browse_btn.grid(column=1, row=2)
 
