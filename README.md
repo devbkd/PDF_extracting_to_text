@@ -14,4 +14,4 @@ Pillow (для работы с изображениями)
 Поместите файл logo.png в ту же директорию, что и код приложения.
 Запустите приложение с помощью команды: python filename.py (замените filename.py на имя файла с кодом).
 ## Автор:
-Рузал Закиров [GitHub](https://github.com/Ruzal-Z/)
+Рузал Закиров [GitHub](https://github.com/devbkd/)
